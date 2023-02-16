@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { Book } from "../types/book"
 import { BooksService } from "./books.service"
+import { MsgService } from "./msg.service"
 
 
 @Component({
@@ -16,11 +17,21 @@ export class BooksComponent implements OnInit{
   f2:boolean=true
   f3:boolean=true
 
-  constructor(private booksService:BooksService){
-    this.books = this.booksService.getBooks()
+  n:string=""
+  msg:string=""
+
+  constructor(private msgService:MsgService){
   }
-  ngOnInit(): void {
-    
+  ngOnInit(): void {}
+  hTst(){
+    if(this.IsNumeric(this.n)){
+      this.msg = this.msgService.getMsg(Number.parseInt(this.n))
+      console.log(this.msg)
+    }
+  }
+
+  hInp(e:any){
+    alert(e.target.value)
   }
 
   addToCart(e:Book){
@@ -28,4 +39,8 @@ export class BooksComponent implements OnInit{
     this.sumPrice = this.cart.reduce((s,e)=>{return s + e.price}, 0)
   }
 
+  IsNumeric(s:string):boolean {
+    var x = +s; // made cast obvious for demonstration
+    return x.toString() === s;
+  }
 }
