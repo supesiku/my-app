@@ -1,0 +1,17 @@
+
+<h1>SELLING<button class="btnIcon" (click)="f1=!f1">&#9760;</button></h1>
+<div class="gp" *ngIf="f1">
+  <ng-container *ngFor="let book of books;let i = index;">
+    <app-book [book]="book" (addtoCartEmitter)="addToCart($event)"></app-book>
+  </ng-container>
+</div>
+
+<h1>CART<button class="btnIcon" (click)="f2=!f2">&#9761;</button></h1>
+<div class="gp2" *ngIf="f2">
+  <h2>SUM : {{sumPrice | currency:"JPY"}} </h2>
+  <ng-container *ngFor="let book of cart;let i = index;">
+    <div class="gc">
+      {{book.name}} - {{book.price | currency:"JPY"}}
+    </div>
+  </ng-container>
+</div>
