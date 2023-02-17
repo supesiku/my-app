@@ -12,7 +12,7 @@ import { MsgServiceJp } from "src/app_1/books/msg.service.jp"
     imports: [BrowserModule, FormsModule],
     declarations: [AppComponent, BooksComponent, BookComponent],
     bootstrap: [AppComponent],
-    providers: [{provide:MsgService, useClass:MsgServiceJp}]
+    // providers: [{provide:MsgService, useClass:MsgServiceJp}]
   }
 )
 

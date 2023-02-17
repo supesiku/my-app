@@ -20,7 +20,14 @@ export class BooksComponent implements OnInit{
   n:string=""
   msg:string=""
 
-  constructor(private msgService:MsgService){
+  constructor(
+    private msgService:MsgService, 
+    private booksService:BooksService){
+      console.log("test");
+      
+      this.books = booksService.getBooks()
+      console.log("test2");
+      
   }
   ngOnInit(): void {}
   hTst(){
