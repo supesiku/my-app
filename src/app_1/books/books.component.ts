@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core"
 import { Book } from "../types/book"
 import { BooksService } from "./books.service"
-import { MsgService } from "./msg.service"
+import { CartService } from "../cart/cart.service"
+import { MsgService } from "../msg/msg.service"
 
 
 @Component({
@@ -9,7 +10,7 @@ import { MsgService } from "./msg.service"
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent implements OnInit{
+export class BooksComponent{
   books:Book[] = []
   cart:Book[] = []
   sumPrice:number = 0
@@ -22,14 +23,10 @@ export class BooksComponent implements OnInit{
 
   constructor(
     private msgService:MsgService, 
-    private booksService:BooksService){
-      console.log("test");
-      
+    private booksService:BooksService, 
+    private cartService:CartService){
       this.books = booksService.getBooks()
-      console.log("test2");
-      
   }
-  ngOnInit(): void {}
   hTst(){
     if(this.IsNumeric(this.n)){
       this.msg = this.msgService.getMsg(Number.parseInt(this.n))
@@ -41,9 +38,11 @@ export class BooksComponent implements OnInit{
     alert(e.target.value)
   }
 
-  addToCart(e:Book){
-    this.cart.push(e)
-    this.sumPrice = this.cart.reduce((s,e)=>{return s + e.price}, 0)
+  addToCart(book:Book){
+    //this.cart.push(book)
+    this.sumPrice = this.cart.reduce((s,i)=>{return s+i.price},0)
+    this.cartService.add(book)
+    this.cart = this.cartService.cart
   }
 
   IsNumeric(s:string):boolean {

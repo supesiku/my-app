@@ -1,0 +1,7 @@
+<h1>CART</h1>
+<div class="gp">
+  <ng-container *ngFor="let item of getCart();let i = index;">
+    <div class="gc">{{item.name}} - {{item.price}}
+      <button (click)="cancel(i)">DEL</button></div>
+  </ng-container>
+</div>
