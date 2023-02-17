@@ -7,8 +7,8 @@ import { MsgService } from "../msg/msg.service"
 
 @Component({
   selector: 'app-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  templateUrl: 'books.component.html',
+  styleUrls: ['books.component.css']
 })
 export class BooksComponent{
   books:Book[] = []
