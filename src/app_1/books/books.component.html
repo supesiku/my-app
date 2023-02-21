@@ -3,7 +3,7 @@
 <button class="btnIcon" (click)="hTst()">&#9762;</button>
 <p>{{msg}}</p>
 
-<h1>SELLING<button class="btnIcon" (click)="f1=!f1">&#9760;</button></h1>
+<h1>SELLING<button class="p-2 bg-green-500" (click)="f1=!f1">&#9760;</button></h1>
 <div class="gp" *ngIf="f1">
   <ng-container *ngFor="let book of books;let i = index;">
     <app-book [book]="book" (addtoCartEmitter)="addToCart($event)"></app-book>

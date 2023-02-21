@@ -1,5 +1,5 @@
 <div class="gc">
   <p class="name">{{ book.name | titlecase }} written by {{ book.author }}</p>
   <p class="currency">{{ book.price | currency:"JPY" }}</p>
-  <button (click)="handleAddCart()">Add to cart</button>
+  <button class="p-4 bg-green-500 rounded-2xl" (click)="handleAddCart()">Add to cart</button>
 </div>

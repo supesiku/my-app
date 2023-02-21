@@ -5,9 +5,14 @@
     <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Book Shop</a>
   </div>
   <div>
-    <a class="mx-4" routerLink="/cart" routerLinkActive="active" ariaCurrentWhenActive="page">My Cart</a>
-    <a class="mx-4" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>
-    <a class="mx-4" routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Register</a>
+    <a class="mx-4" routerLink="/cart" >My Cart</a>
+    <ng-container *ngIf="!isAuthed()">
+      <a class="mx-4" routerLink="/login" >Login</a>
+      <a class="mx-4" routerLink="/register" >Register</a>
+    </ng-container>
+    <ng-container *ngIf="isAuthed()">
+      <button class="mx-4" (click)="logout()">Logout</button>
+    </ng-container>
   </div>
 </nav>
 <div class="p-4">

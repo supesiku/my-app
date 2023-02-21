@@ -18,4 +18,7 @@ export class CartComponent{
   cancel(index:number){
     this.cartService.del(index)
   }
+  getSum():number{
+    return this.cartService.get().reduce((a,b)=>a + b.price, 0)
+  }
 }
