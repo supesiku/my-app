@@ -7,10 +7,11 @@ import { MsgServiceJp } from "src/app_1/msg/msg.service.jp"
 import { BooksModule } from "./books/books.module";
 import { CartModule } from "./cart/cart.module";
 import { AppRoutingModule } from "src/app_1/app-routing.module";
+import { AuthModule } from "./auth/auth.module";
 
 @NgModule(
   {
-    imports: [BrowserModule, FormsModule, BooksModule, CartModule, AppRoutingModule],
+    imports: [BrowserModule, BooksModule, CartModule, AppRoutingModule, AuthModule],
     declarations: [AppComponent],
     bootstrap: [AppComponent],
     // providers: [{provide:MsgService, useClass:MsgServiceJp}]

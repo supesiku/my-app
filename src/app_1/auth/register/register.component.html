@@ -1,23 +1,32 @@
 <div class="flex m-auto h-screen justify-center">
-  <form class="p-4 rounded-lg border">
+  <form (ngSubmit)="submit()" #myForm="ngForm" class="p-4 rounded-lg border">
     <h1 class="text-center text-xl">Login</h1>
     <div>
       <label for="email">e-mail
-        <input type="email" class="p-2 rounded h-7" />
+        <input type="email" class="p-2 rounded h-7" [(ngModel)]="form.email" name="email" #email="ngModel" required />
       </label>
+    </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="p-2 bg bg-red-300 text-red-700 rounded">
+      email field must be valid.
     </div>
     <div>
       <label for="password">Password
-        <input type="password" class="p-2 rounded h-8" />
+        <input type="password" class="p-2 rounded h-8" [(ngModel)]="form.password" name="password" #password="ngModel" required />
       </label>
+    </div>
+    <div *ngIf="password.invalid && password.touched" class="p-2 bg bg-red-300 text-red-700 rounded">
+      password field must be valid.
     </div>
     <div>
       <label for="password">Confirm Password
-        <input type="password" class="p-2 rounded h-8" />
+        <input type="password" class="p-2 rounded h-8" [(ngModel)]="form.confirm" name="confirm" #confirm="ngModel" required />
       </label>
     </div>
+    <div *ngIf="confirm.invalid && confirm.touched" class="p-2 bg bg-red-300 text-red-700 rounded">
+      confirm field must be valid.
+    </div>
     <div>
-        <input type="submit" class="p-2 w-full bg-purple-700 text-white" />
+        <input type="submit" [disabled]="myForm.invalid" class="p-2 w-full bg-amber-700 text-white" />
     </div>
   </form>
 </div>
